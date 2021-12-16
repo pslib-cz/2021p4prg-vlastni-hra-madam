@@ -1,4 +1,4 @@
-# Vlastní hra v Uniti - Prima rande
+# Vlastní hra v Unity - Prima rande
 *Adam Antoš, Michaela Hübnerová*
 
 * Jedná se o ardkádovou hru, kde hráč postupně prochází jednotlivými lokacemi a plní dané úkoly
