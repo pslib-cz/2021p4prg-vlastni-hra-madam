@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SupermarketScript : MonoBehaviour
 {
-    public float maxRunSpeed = 5;
-    public float jumpSpeed = 5;
+    public float maxRunSpeed = 10;
     //public Text ScoreText;
 
     private Rigidbody2D _rb;

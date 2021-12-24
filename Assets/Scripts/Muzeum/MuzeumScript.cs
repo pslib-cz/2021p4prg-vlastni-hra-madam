@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class UvodScript : MonoBehaviour
+public class MuzeumScript : MonoBehaviour
 {
-    public float maxRunSpeed = 5;
-    public Text ScoreText;
+    public float maxRunSpeed = 10;
+    //public Text ScoreText;
 
     private Rigidbody2D _rb;
     private Collider2D _col;
@@ -36,9 +36,26 @@ public class UvodScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("Start"))
+        /*if (collider.gameObject.CompareTag("Jidlo"))
         {
-            SceneManager.LoadScene("Muzeum");
+            collider.gameObject.SetActive(false);
+            _score++;
+            //ScoreText.SetText("Score:"  + _score);
+            GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
+            if (pickups.Length == 0) {
+                SceneManager.LoadScene("Moonbucks");
+            }
+            else
+            {
+                pickups[0].GetComponent<Rigidbody2D>().WakeUp();
+                GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
+                if(pickups.Length % 3 == 0 && spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
+            }
+        }*/
+        if (collider.gameObject.CompareTag("Item"))
+        {
+                collider.gameObject.SetActive(false);
+                SceneManager.LoadScene("Muzeum"); //prohra
         }
     }
 }

@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pokoj.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Muzeum.unity
+    guid: 202617fe7907647d0b487b1db198de9c
   - enabled: 1
     path: Assets/Scenes/Supermarket.unity
     guid: bba391711c8f4487eaa262e5bf31ca11
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Park.unity
     guid: 312dc9f59d9f64a079ac796a725d1d7e
+  - enabled: 0
+    path: "Assets/Scenes/Kader\u030Cnictvi\u0301.unity"
+    guid: 2706c5192e106408ba85f411ef5cdfcf
   m_configObjects: {}
