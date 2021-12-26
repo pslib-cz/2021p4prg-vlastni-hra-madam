@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class SupermarketScript : MonoBehaviour
 {
     public float maxRunSpeed = 10;
+    public GameObject postup;
+    public GameObject prohra;
     //public Text ScoreText;
 
     private Rigidbody2D _rb;
@@ -15,6 +17,7 @@ public class SupermarketScript : MonoBehaviour
     private Animator _anim;
     private bool _facingRight = false;
     private int _score;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,10 @@ public class SupermarketScript : MonoBehaviour
         _sr.flipX = _facingRight;
         _anim.SetFloat("IsMoving", Mathf.Abs(move));
         _rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
+            pickups[5].GetComponent<Rigidbody2D>().WakeUp();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
@@ -43,7 +50,7 @@ public class SupermarketScript : MonoBehaviour
             //ScoreText.SetText("Score:"  + _score);
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
             if (pickups.Length == 0) {
-                SceneManager.LoadScene("Moonbucks");
+                postup.SetActive(true);//SceneManager.LoadScene("Moonbucks");
             }
             else
             {
@@ -55,7 +62,7 @@ public class SupermarketScript : MonoBehaviour
         if (collider.gameObject.CompareTag("SpatnaVec"))
         {
                 collider.gameObject.SetActive(false);
-                SceneManager.LoadScene("Supermarket"); //prohra
+                prohra.SetActive(true);
         }
     }
 }

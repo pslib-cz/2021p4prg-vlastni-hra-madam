@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerScript : MonoBehaviour
+public class KadernictviScript : MonoBehaviour
 {
     public float maxRunSpeed = 5;
     public float jumpSpeed = 5;
@@ -43,9 +43,10 @@ public class PlayerScript : MonoBehaviour
             _rb.AddForce(new Vector2(0,jumpSpeed), ForceMode2D.Impulse);
         }
         _rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.Space)) postup.SetActive(true);
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
+    /*void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Frappuccino"))
         {
             collider.gameObject.SetActive(false);
@@ -56,5 +57,5 @@ public class PlayerScript : MonoBehaviour
                 postup.SetActive(true);
             }
         }
-    }
+    }*/
 }

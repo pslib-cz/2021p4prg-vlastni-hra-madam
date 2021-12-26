@@ -9,6 +9,8 @@ TagManager:
   - Jidlo
   - SpatnaVec
   - Item
+  - Postup
+  - Prohra
   layers:
   - Default
   - TransparentFX

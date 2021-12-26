@@ -8,6 +8,7 @@ public class FloorScript : MonoBehaviour
 {
     public Text ChybyText;
     public int PocetChybProhra;
+    public GameObject postup;
 
     private Rigidbody2D _rb;
     private Collider2D _col;
@@ -21,7 +22,6 @@ public class FloorScript : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<Collider2D>();
         _sr = GetComponent<SpriteRenderer>();
-        GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
     }
 
     // Update is called once per frame
@@ -30,23 +30,6 @@ public class FloorScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        /*if (collider.gameObject.CompareTag("Jidlo"))
-        {
-            _chyby++;
-            collider.gameObject.SetActive(false);
-            //ChybyText.SetText("Chyb:"  + _chyby);
-            if (_chyby == PocetChybProhra) {
-                SceneManager.LoadScene("Supermarket");
-            }
-            else
-            {
-                GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
-                GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
-                if(pickups.Length % 3 == 0 && spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
-                if(pickups.Length != 0) pickups[0].GetComponent<Rigidbody2D>().WakeUp();
-                else SceneManager.LoadScene("Park");
-            }
-        }*/
         if (collider.gameObject.CompareTag("Item"))
         {
                 collider.gameObject.SetActive(false);
@@ -58,7 +41,7 @@ public class FloorScript : MonoBehaviour
                     itemy[3].GetComponent<Rigidbody2D>().WakeUp();
                 } 
                 else if (itemy.Length != 0) itemy[0].GetComponent<Rigidbody2D>().WakeUp();
-                else SceneManager.LoadScene("Supermarket");
+                else postup.SetActive(true);
                 //GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
                 //if(spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
         }

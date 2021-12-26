@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MuzeumScript : MonoBehaviour
 {
     public float maxRunSpeed = 10;
+    public GameObject prohra;
     //public Text ScoreText;
 
     private Rigidbody2D _rb;
@@ -33,29 +34,24 @@ public class MuzeumScript : MonoBehaviour
         _sr.flipX = _facingRight;
         _anim.SetFloat("IsMoving", Mathf.Abs(move));
         _rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            GameObject[] itemy = GameObject.FindGameObjectsWithTag("Item");
+            itemy[0].GetComponent<Rigidbody2D>().WakeUp();
+            itemy[5].GetComponent<Rigidbody2D>().WakeUp();
+            itemy[10].GetComponent<Rigidbody2D>().WakeUp();
+            itemy[15].GetComponent<Rigidbody2D>().WakeUp();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        /*if (collider.gameObject.CompareTag("Jidlo"))
-        {
-            collider.gameObject.SetActive(false);
-            _score++;
-            //ScoreText.SetText("Score:"  + _score);
-            GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
-            if (pickups.Length == 0) {
-                SceneManager.LoadScene("Moonbucks");
-            }
-            else
-            {
-                pickups[0].GetComponent<Rigidbody2D>().WakeUp();
-                GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
-                if(pickups.Length % 3 == 0 && spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
-            }
-        }*/
         if (collider.gameObject.CompareTag("Item"))
         {
                 collider.gameObject.SetActive(false);
-                SceneManager.LoadScene("Muzeum"); //prohra
+                GameObject[] itemy = GameObject.FindGameObjectsWithTag("Item");
+                foreach (GameObject item in itemy) {
+                    item.GetComponent<Rigidbody2D>().Sleep();
+                }
+                prohra.SetActive(true);
         }
     }
 }

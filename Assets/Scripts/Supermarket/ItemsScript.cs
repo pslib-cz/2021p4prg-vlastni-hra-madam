@@ -8,6 +8,8 @@ public class ItemsScript : MonoBehaviour
 {
     public Text ChybyText;
     public int PocetChybProhra;
+    public GameObject postup;
+    public GameObject prohra;
 
     private Rigidbody2D _rb;
     private Collider2D _col;
@@ -36,7 +38,7 @@ public class ItemsScript : MonoBehaviour
             collider.gameObject.SetActive(false);
             //ChybyText.SetText("Chyb:"  + _chyby);
             if (_chyby == PocetChybProhra) {
-                SceneManager.LoadScene("Supermarket");
+                prohra.SetActive(true);
             }
             else
             {
@@ -44,7 +46,7 @@ public class ItemsScript : MonoBehaviour
                 GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
                 if(pickups.Length % 3 == 0 && spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
                 if(pickups.Length != 0) pickups[0].GetComponent<Rigidbody2D>().WakeUp();
-                else SceneManager.LoadScene("Park");
+                else postup.SetActive(true);
             }
         }
         if (collider.gameObject.CompareTag("SpatnaVec"))
