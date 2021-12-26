@@ -47,11 +47,8 @@ public class MuzeumScript : MonoBehaviour
         if (collider.gameObject.CompareTag("Item"))
         {
                 collider.gameObject.SetActive(false);
-                GameObject[] itemy = GameObject.FindGameObjectsWithTag("Item");
-                foreach (GameObject item in itemy) {
-                    item.GetComponent<Rigidbody2D>().Sleep();
-                }
                 prohra.SetActive(true);
+                Time.timeScale = 0;
         }
     }
 }

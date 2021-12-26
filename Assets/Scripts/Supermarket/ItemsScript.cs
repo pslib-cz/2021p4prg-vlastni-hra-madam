@@ -11,25 +11,7 @@ public class ItemsScript : MonoBehaviour
     public GameObject postup;
     public GameObject prohra;
 
-    private Rigidbody2D _rb;
-    private Collider2D _col;
-    private SpriteRenderer _sr;
-
     private int _chyby;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponent<Collider2D>();
-        _sr = GetComponent<SpriteRenderer>();
-        GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Jidlo"))
@@ -39,6 +21,7 @@ public class ItemsScript : MonoBehaviour
             //ChybyText.SetText("Chyb:"  + _chyby);
             if (_chyby == PocetChybProhra) {
                 prohra.SetActive(true);
+                Time.timeScale = 0;
             }
             else
             {
@@ -46,14 +29,15 @@ public class ItemsScript : MonoBehaviour
                 GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
                 if(pickups.Length % 3 == 0 && spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
                 if(pickups.Length != 0) pickups[0].GetComponent<Rigidbody2D>().WakeUp();
-                else postup.SetActive(true);
+                else {
+                    postup.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
         }
         if (collider.gameObject.CompareTag("SpatnaVec"))
         {
                 collider.gameObject.SetActive(false);
-                //GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
-                //if(spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
         }
     }
 }

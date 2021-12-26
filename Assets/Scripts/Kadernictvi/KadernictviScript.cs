@@ -10,14 +10,13 @@ public class KadernictviScript : MonoBehaviour
     public float jumpSpeed = 5;
     public Text ScoreText;
     public GameObject postup;
+    public GameObject prohra;
 
     private Rigidbody2D _rb;
     private Collider2D _col;
     private SpriteRenderer _sr;
     private Animator _anim;
     private bool _onGround = false;
-    private bool _facingRight = false;
-    private int _score;
 
     // Start is called before the first frame update
     void Start()
@@ -26,36 +25,41 @@ public class KadernictviScript : MonoBehaviour
         _col = GetComponent<Collider2D>();
         _sr = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         _onGround = _col.IsTouchingLayers();
-        float move = Input.GetAxis("Horizontal");
-        if (move !=0) _facingRight = (move < 0);
-        _sr.flipX = _facingRight;
-        _anim.SetFloat("IsMoving", Mathf.Abs(move));
+        //float move = Input.GetAxis("Horizontal");
+        //if (move !=0) _facingRight = (move < 0);
+        //_sr.flipX = _facingRight;
+        _anim.SetFloat("IsMoving", Mathf.Abs(maxRunSpeed));
         _anim.SetBool("IsJumping", !_onGround);
         //_rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            Time.timeScale = 1;
+        }
         if (Input.GetKeyDown(KeyCode.Space) && _onGround || Input.GetKeyDown(KeyCode.UpArrow) && _onGround)
         {
             _rb.AddForce(new Vector2(0,jumpSpeed), ForceMode2D.Impulse);
         }
-        _rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
-        if (Input.GetKeyDown(KeyCode.Space)) postup.SetActive(true);
+        _rb.velocity = new Vector2(maxRunSpeed, _rb.velocity.y);
     }
 
-    /*void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("Frappuccino"))
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.CompareTag("Item"))
         {
-            collider.gameObject.SetActive(false);
-            _score++;
-            //ScoreText.SetText("Score:"  + _score);
-            GameObject[] pickups = GameObject.FindGameObjectsWithTag("Frappuccino");
-            if (pickups.Length == 0) {
-                postup.SetActive(true);
-            }
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+            prohra.SetActive(true);
+            Time.timeScale = 0;
         }
-    }*/
+        if (collider.gameObject.CompareTag("Zohan"))
+        {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+            postup.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 }

@@ -50,7 +50,8 @@ public class SupermarketScript : MonoBehaviour
             //ScoreText.SetText("Score:"  + _score);
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
             if (pickups.Length == 0) {
-                postup.SetActive(true);//SceneManager.LoadScene("Moonbucks");
+                postup.SetActive(true);
+                Time.timeScale = 0;
             }
             else
             {
@@ -63,6 +64,7 @@ public class SupermarketScript : MonoBehaviour
         {
                 collider.gameObject.SetActive(false);
                 prohra.SetActive(true);
+                Time.timeScale = 0;
         }
     }
 }

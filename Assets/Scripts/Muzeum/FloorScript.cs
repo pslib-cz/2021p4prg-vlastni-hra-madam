@@ -10,24 +10,7 @@ public class FloorScript : MonoBehaviour
     public int PocetChybProhra;
     public GameObject postup;
 
-    private Rigidbody2D _rb;
-    private Collider2D _col;
-    private SpriteRenderer _sr;
-
     private int _chyby;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponent<Collider2D>();
-        _sr = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Item"))
@@ -41,9 +24,10 @@ public class FloorScript : MonoBehaviour
                     itemy[3].GetComponent<Rigidbody2D>().WakeUp();
                 } 
                 else if (itemy.Length != 0) itemy[0].GetComponent<Rigidbody2D>().WakeUp();
-                else postup.SetActive(true);
-                //GameObject[] spatneVeci = GameObject.FindGameObjectsWithTag("SpatnaVec");
-                //if(spatneVeci.Length != 0) spatneVeci[0].GetComponent<Rigidbody2D>().WakeUp();
+                else {
+                    postup.SetActive(true);
+                    Time.timeScale = 0;
+                }
         }
     }
 }

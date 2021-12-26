@@ -37,7 +37,6 @@ public class PlayerScript : MonoBehaviour
         _sr.flipX = _facingRight;
         _anim.SetFloat("IsMoving", Mathf.Abs(move));
         _anim.SetBool("IsJumping", !_onGround);
-        //_rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
         if (Input.GetKeyDown(KeyCode.Space) && _onGround || Input.GetKeyDown(KeyCode.UpArrow) && _onGround)
         {
             _rb.AddForce(new Vector2(0,jumpSpeed), ForceMode2D.Impulse);
@@ -54,6 +53,7 @@ public class PlayerScript : MonoBehaviour
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Frappuccino");
             if (pickups.Length == 0) {
                 postup.SetActive(true);
+                Time.timeScale = 0;
             }
         }
     }

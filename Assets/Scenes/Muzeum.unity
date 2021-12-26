@@ -9770,7 +9770,7 @@ Transform:
   m_GameObject: {fileID: 1319979832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: 0.55, z: 0}
-  m_LocalScale: {x: 1.08, y: 1.08, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -11258,7 +11258,7 @@ PrefabInstance:
       objectReference: {fileID: 135945311}
     - target: {fileID: 5274506530231273186, guid: 1239422517a5f42c59b1b600f4cf5bbb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSupermarket
+      value: LoadKadernictvi
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1239422517a5f42c59b1b600f4cf5bbb, type: 3}

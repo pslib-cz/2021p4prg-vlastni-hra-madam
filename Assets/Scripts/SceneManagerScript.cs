@@ -28,22 +28,27 @@ public class SceneManagerScript : MonoBehaviour
     public void LoadMoonbucks()
     {
         SceneManager.LoadScene("Moonbucks");
+        Resume();
     }
     public void LoadSupermarket()
     {
         SceneManager.LoadScene("Supermarket");
+        Resume();
     }
     public void LoadKadernictvi()
     {
         SceneManager.LoadScene("Kadernictvi");
+        Resume();
     }
     public void LoadMuzeum()
     {
         SceneManager.LoadScene("Muzeum");
+        Resume();
     }
     public void LoadPark()
     {
         SceneManager.LoadScene("Park");
+        Resume();
     }
 
     public void Resume()
@@ -53,7 +58,7 @@ public class SceneManagerScript : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         IsGamePaused = true;
