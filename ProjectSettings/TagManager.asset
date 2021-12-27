@@ -10,6 +10,8 @@ TagManager:
   - SpatnaVec
   - Item
   - Zohan
+  - Postup
+  - Bublina
   layers:
   - Default
   - TransparentFX

@@ -40,6 +40,7 @@ public class MuzeumScript : MonoBehaviour
             itemy[5].GetComponent<Rigidbody2D>().WakeUp();
             itemy[10].GetComponent<Rigidbody2D>().WakeUp();
             itemy[15].GetComponent<Rigidbody2D>().WakeUp();
+            GameObject.FindWithTag("Bublina").SetActive(false);
         }
     }
 

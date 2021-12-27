@@ -50,6 +50,11 @@ public class SceneManagerScript : MonoBehaviour
         SceneManager.LoadScene("Park");
         Resume();
     }
+    public void LoadPokoj()
+    {
+        SceneManager.LoadScene("Park");
+        Resume();
+    }
 
     public void Resume()
     {

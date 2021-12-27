@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     public float maxRunSpeed = 5;
     public float jumpSpeed = 5;
     public Text ScoreText;
+    public Text CelkemText;
     public GameObject postup;
 
     private Rigidbody2D _rb;
@@ -26,6 +27,8 @@ public class PlayerScript : MonoBehaviour
         _col = GetComponent<Collider2D>();
         _sr = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
+        GameObject[] itemy = GameObject.FindGameObjectsWithTag("Frappuccino");
+        CelkemText.text = itemy.Length.ToString();
     }
 
     // Update is called once per frame
@@ -49,7 +52,7 @@ public class PlayerScript : MonoBehaviour
         {
             collider.gameObject.SetActive(false);
             _score++;
-            //ScoreText.SetText("Score:"  + _score);
+            ScoreText.text = _score.ToString();
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Frappuccino");
             if (pickups.Length == 0) {
                 postup.SetActive(true);

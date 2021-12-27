@@ -32,16 +32,12 @@ public class KadernictviScript : MonoBehaviour
     void Update()
     {
         _onGround = _col.IsTouchingLayers();
-        //float move = Input.GetAxis("Horizontal");
-        //if (move !=0) _facingRight = (move < 0);
-        //_sr.flipX = _facingRight;
         _anim.SetFloat("IsMoving", Mathf.Abs(maxRunSpeed));
         _anim.SetBool("IsJumping", !_onGround);
-        //_rb.velocity = new Vector2(move * maxRunSpeed, _rb.velocity.y);
         if(Input.GetKeyDown(KeyCode.Space)) {
             Time.timeScale = 1;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && _onGround || Input.GetKeyDown(KeyCode.UpArrow) && _onGround)
+        if (Input.GetKeyDown(KeyCode.Space) && _onGround || Input.GetKeyDown(KeyCode.UpArrow) && _onGround)
         {
             _rb.AddForce(new Vector2(0,jumpSpeed), ForceMode2D.Impulse);
         }
@@ -49,17 +45,18 @@ public class KadernictviScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.CompareTag("Item"))
-        {
-            _rb.velocity = new Vector2(0, _rb.velocity.y);
-            prohra.SetActive(true);
-            Time.timeScale = 0;
-        }
         if (collider.gameObject.CompareTag("Zohan"))
         {
-            _rb.velocity = new Vector2(0, _rb.velocity.y);
             postup.SetActive(true);
             Time.timeScale = 0;
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
         }
+        if (collider.gameObject.CompareTag("Item"))
+        {
+            prohra.SetActive(true);
+            Time.timeScale = 0;
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
+        }
+
     }
 }

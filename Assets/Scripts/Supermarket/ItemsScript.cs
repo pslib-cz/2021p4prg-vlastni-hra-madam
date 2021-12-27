@@ -6,19 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class ItemsScript : MonoBehaviour
 {
-    public Text ChybyText;
     public int PocetChybProhra;
     public GameObject postup;
     public GameObject prohra;
+    public Text ChybyText;
+    public Text CelkemChybText;
 
     private int _chyby;
+
+    void Start()
+    {
+        CelkemChybText.text = PocetChybProhra.ToString();
+    }
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Jidlo"))
         {
             _chyby++;
+            ChybyText.text = _chyby.ToString();
             collider.gameObject.SetActive(false);
-            //ChybyText.SetText("Chyb:"  + _chyby);
             if (_chyby == PocetChybProhra) {
                 prohra.SetActive(true);
                 Time.timeScale = 0;

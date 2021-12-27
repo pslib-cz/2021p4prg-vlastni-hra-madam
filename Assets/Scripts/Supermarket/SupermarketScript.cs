@@ -9,21 +9,17 @@ public class SupermarketScript : MonoBehaviour
     public float maxRunSpeed = 10;
     public GameObject postup;
     public GameObject prohra;
-    //public Text ScoreText;
 
     private Rigidbody2D _rb;
-    private Collider2D _col;
     private SpriteRenderer _sr;
     private Animator _anim;
     private bool _facingRight = false;
-    private int _score;
 
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _col = GetComponent<Collider2D>();
         _sr = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
     }
@@ -39,6 +35,7 @@ public class SupermarketScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
             pickups[5].GetComponent<Rigidbody2D>().WakeUp();
+            GameObject.FindWithTag("Bublina").SetActive(false);
         }
     }
 
@@ -46,8 +43,6 @@ public class SupermarketScript : MonoBehaviour
         if (collider.gameObject.CompareTag("Jidlo"))
         {
             collider.gameObject.SetActive(false);
-            _score++;
-            //ScoreText.SetText("Score:"  + _score);
             GameObject[] pickups = GameObject.FindGameObjectsWithTag("Jidlo");
             if (pickups.Length == 0) {
                 postup.SetActive(true);
