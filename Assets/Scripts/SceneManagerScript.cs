@@ -55,6 +55,11 @@ public class SceneManagerScript : MonoBehaviour
         SceneManager.LoadScene("Park");
         Resume();
     }
+    public void LoadRande()
+    {
+        SceneManager.LoadScene("Rande");
+        Resume();
+    }
 
     public void Resume()
     {
