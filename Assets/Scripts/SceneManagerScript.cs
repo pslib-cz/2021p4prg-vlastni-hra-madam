@@ -52,7 +52,7 @@ public class SceneManagerScript : MonoBehaviour
     }
     public void LoadPokoj()
     {
-        SceneManager.LoadScene("Park");
+        SceneManager.LoadScene("Pokoj");
         Resume();
     }
     public void LoadRande()
